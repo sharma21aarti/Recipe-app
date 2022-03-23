@@ -58,8 +58,7 @@ function Popular() {
                        })}
                 </Splide>
              </Wrapper>
-
-    </div>
+      </div>
   )
 }
 

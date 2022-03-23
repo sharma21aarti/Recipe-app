@@ -11,7 +11,7 @@ function Recipe() {
     const [activeTab,setActiveTab] = useState("instructions")
     console.log(details);
 
-    const fatchDetails = async()=>{
+    const fetchDetails = async()=>{
         const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
         const detailData =await data.json();
 
@@ -20,7 +20,7 @@ function Recipe() {
     }
 
     useEffect(()=>{
-        fatchDetails();
+        fetchDetails();
     }, [params.name])
 
   return (
@@ -33,15 +33,16 @@ function Recipe() {
         </div>
 
         <Info>
-            <Button className={activeTab === "instruction" ? "active" : ""} onClick={()=>setActiveTab("instruction")}>Instruction</Button>
+            <Button className={activeTab === "instructions" ? "active" : ""} onClick={()=>setActiveTab("instructions")}>Instruction</Button>
             <Button className={activeTab === "ingredients" ? "active" : ""} onClick={()=>setActiveTab("ingredients")}>Ingredients</Button>
-            {activeTab === "instruction" &&  (
+            {activeTab === "instructions" &&  (
             <div>
                 <h3 dangerouslySetInnerHTML={{__html: details.summary}}></h3>
                 <h3 dangerouslySetInnerHTML={{__html: details.instructions}}></h3>
             </div>)}
             {
-                activeTab === "ingredients" &&( <ul>
+                activeTab === "ingredients" &&(
+                 <ul>
                     {
                         details.extendedIngredients.map((ingredients)=>(
                             <li key = {ingredients.id}>
@@ -91,8 +92,9 @@ const Button = styled.button `
   margin-right: 2rem;
   font-weight: 600;
 `;
+
 const Info = styled.div `
 margin-left: 10rem
-`
+`;
 
 export default Recipe
