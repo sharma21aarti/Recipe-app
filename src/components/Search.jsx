@@ -8,8 +8,6 @@ function Serach(){
     const [input,setInput] = useState("");
     const navigate = useNavigate();
 
-    console.log("input" , input);
-
     const submitHandler = (e)=>{
      e.preventDefault();
         navigate("/searched/"+input);
@@ -41,7 +39,7 @@ const FormStyle = styled.form `
      color: white;
      font-size: 1.5rem;
      padding: 1rem 3rem;
-    //  border: none;
+     border: none;
      border-radius: 1rem;
      outline: none;
      width: 100%;
@@ -50,7 +48,7 @@ const FormStyle = styled.form `
  svg{
      position:absolute;
      top: 40%;
-     left: 0%;
+     left: 3%;
      transform: translate(100% -50%);
      align-items: center;
      color: white;

@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react'
 import styled from 'styled-components'
 import {useParams} from "react-router-dom"
-import { act } from 'react-dom/test-utils';
+
 
 
 function Recipe() {
@@ -9,7 +9,7 @@ function Recipe() {
     let params= useParams();
     const [details, setDetails] = useState({})
     const [activeTab,setActiveTab] = useState("instructions")
-    console.log(details);
+    console.log(params);
 
     const fetchDetails = async()=>{
         const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
@@ -30,7 +30,7 @@ function Recipe() {
         {details.title}
         </h2>
         <img src= {details.image} alt="" />
-        </div>
+    </div>
 
         <Info>
             <Button className={activeTab === "instructions" ? "active" : ""} onClick={()=>setActiveTab("instructions")}>Instruction</Button>
@@ -60,7 +60,7 @@ function Recipe() {
   )
 }
 
-const DeatailWrapper = styled.div `
+const DeatailWrapper = styled.div`
   margin-top: 10rem;
   margin-bottom: 5rem;
   display: flex;
